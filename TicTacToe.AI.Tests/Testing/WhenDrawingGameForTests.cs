@@ -5,7 +5,7 @@ using TicTacToe.AI.Tests.Core;
 namespace TicTacToe.AI.Tests.Testing
 {
     [TestFixture]
-    public class When_Drawing_Board_For_Tests : BoardTest
+    public class WhenDrawingGameForTests : GameTest
     {
         [Test]
         public void Draws_Nice_Ascii_Representation()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ApprovalTests;
+using ApprovalTests.Namers;
 using NUnit.Framework;
 using TicTacToe.AI.Tests.Core;
 using TicTacToe.AI.Tests.Testing;
@@ -10,7 +12,7 @@ using TicTacToe.AI.Tests.Testing;
 namespace TicTacToe.AI.Tests.AI
 {
     [TestFixture]
-    public class Second_Player : BoardTest
+    public class Second_Player : GameTest
     {
         [Test]
         [TestCase(0, 2, 2)]
@@ -21,13 +23,25 @@ namespace TicTacToe.AI.Tests.AI
         {
             Randomizer.Seed(seed);
 
-            var playerA = new Player(Board, 'X');
-            var playerB = new Player(Board, 'O');
+            TakeTurns(1);
 
-            playerA.TakeTurn();
-            playerB.TakeTurn();
+            VerifyCell(expectedX, expectedY, 'O');
+            using (ApprovalResults.ForScenario(seed))
+            {
+                Approvals.Verify(Board.Ascii());
+            }
+        }
 
-            Assert.That(Board.GetCell(expectedX, expectedY), Is.EqualTo('O'));
+        [Test]
+        [TestCase(0, 2, 0)]
+        public void Always_Chooses_Adjacent_Corner_On_Second_Move(int seed, int expectedX, int expectedY)
+        {
+            Randomizer.Seed(seed);
+
+            TakeTurns(1);
+            TakeTurns(1);
+
+            VerifyCell(expectedX, expectedY, 'O');
         }
     }
 }

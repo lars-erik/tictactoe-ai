@@ -58,14 +58,16 @@
     <Compile Include="Core\Randomizer.cs" />
     <Compile Include="GlobalSetup.cs" />
     <Compile Include="Core\Board.cs" />
-    <Compile Include="Testing\BoardTest.cs" />
+    <Compile Include="Testing\GameTest.cs" />
     <Compile Include="Testing\BoardTestExtensions.cs" />
-    <Compile Include="Testing\When_Drawing_Board_For_Tests.cs" />
+    <Compile Include="Testing\WhenDrawingGameForTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Testing\WhenDrawingGameForTests.Draws_Nice_Ascii_Representation.approved.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
