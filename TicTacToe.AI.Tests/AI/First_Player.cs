@@ -26,14 +26,35 @@ namespace TicTacToe.AI.Tests.AI
 
         [Test]
         [TestCase(0, 0, 2)]
-        [TestCase(1, 0, 2)]
+        [TestCase(1, 2, 0)]
         [TestCase(2, 0, 0)]
         [TestCase(3, 2, 2)]
-        public void Always_Chooses_Adjacent_Corner_To_Second_Player_On_Second_Move(int seed, int expectedX, int expectedY)
+        public void Always_Chooses_Spot_With_Least_Opponents_On_Second_Move(int seed, int expectedX, int expectedY)
         {
             Randomizer.Seed(seed);
 
             TakeTurns(1);
+
+            PlayerA.TakeTurn();
+
+            VerifyCell(expectedX, expectedY, 'X');
+            using (ApprovalResults.ForScenario(seed))
+            {
+                Approvals.Verify(Board.Ascii());
+            }
+        }
+
+        [Test]
+        [TestCase(0, 2, 0)]
+        [TestCase(1, 0, 2)]
+        [TestCase(2, 2, 2)]
+        public void Always_Fills_Gap_On_Third_Move(int seed, int expectedX, int expectedY)
+        {
+            Randomizer.Seed(seed);
+
+            TakeTurns(2);
+
+            Board.Dump();
 
             PlayerA.TakeTurn();
 
