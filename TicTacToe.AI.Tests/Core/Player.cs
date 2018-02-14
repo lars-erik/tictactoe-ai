@@ -40,8 +40,8 @@ namespace TicTacToe.AI.Tests.Core
 
         private bool TakeUsefulSpot(Dictionary<Point, int> scorePoints)
         {
-            var bestPair = scorePoints.OrderByDescending(s => s.Value).First();
-            if (bestPair.Value > 0)
+            var bestPair = scorePoints.OrderByDescending(s => s.Value).FirstOrDefault();
+            if (scorePoints.Count > 0)
             {
                 TakeCell(bestPair.Key.X, bestPair.Key.Y);
                 return true;
@@ -179,7 +179,7 @@ namespace TicTacToe.AI.Tests.Core
             {
                 availableOrOwn+=2;
             }
-            else if (Opponent(cell))
+            else if (Opponent(center))
             {
                 opponent--;
             }
@@ -208,7 +208,7 @@ namespace TicTacToe.AI.Tests.Core
             {
                 return opponent;
             }
-            return availableOrOwn + opponent + 1;
+            return availableOrOwn + opponent + (opponent < 0 ? 0 : 1);
         }
 
         private bool Opponent(char cell)
