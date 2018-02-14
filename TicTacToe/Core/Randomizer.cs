@@ -1,15 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TicTacToe.AI.Tests.Core
+namespace TicTacToe.Core
 {
     public class Randomizer
     {
         private static int seed;
         private static Random rnd;
+
+        public static int Next(int max)
+        {
+            return rnd.Next(0, max);
+        }
 
         public static int Next()
         {

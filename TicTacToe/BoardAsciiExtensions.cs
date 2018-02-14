@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Text;
-using TicTacToe.AI.Tests.Core;
+using TicTacToe.Core;
 
-namespace TicTacToe.AI.Tests.Testing
+namespace TicTacToe
 {
-    public static class BoardTestExtensions
+    public static class BoardAsciiExtensions
     {
         public static void Dump(this Board board)
         {

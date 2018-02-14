@@ -1,6 +1,5 @@
 ﻿using ApprovalTests;
 using NUnit.Framework;
-using TicTacToe.AI.Tests.Core;
 
 namespace TicTacToe.AI.Tests.Testing
 {

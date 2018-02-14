@@ -1,4 +1,4 @@
-﻿namespace TicTacToe.AI.Tests.Core
+﻿namespace TicTacToe.Core
 {
     public class Board
     {

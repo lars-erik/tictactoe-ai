@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
+using TicTacToe.Core;
 
-namespace TicTacToe.AI.Tests.Core
+namespace TicTacToe.AI
 {
     public class Player
     {
@@ -40,7 +39,10 @@ namespace TicTacToe.AI.Tests.Core
 
         private bool TakeUsefulSpot(Dictionary<Point, int> scorePoints)
         {
-            var bestPair = scorePoints.OrderByDescending(s => s.Value).FirstOrDefault();
+            if (!scorePoints.Any()) return false;
+            var maxScore = scorePoints.Values.Max();
+            var bestPairs = scorePoints.Where(p => p.Value == maxScore).ToArray();
+            var bestPair = bestPairs[Randomizer.Next(bestPairs.Count())];
             if (scorePoints.Count > 0)
             {
                 TakeCell(bestPair.Key.X, bestPair.Key.Y);

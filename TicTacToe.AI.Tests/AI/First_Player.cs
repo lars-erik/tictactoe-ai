@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using ApprovalTests;
 using ApprovalTests.Namers;
 using NUnit.Framework;
-using TicTacToe.AI.Tests.Core;
 using TicTacToe.AI.Tests.Testing;
+using TicTacToe.Core;
 
 namespace TicTacToe.AI.Tests.AI
 {
@@ -25,10 +25,10 @@ namespace TicTacToe.AI.Tests.AI
         }
 
         [Test]
-        [TestCase(0, 0, 2)]
-        [TestCase(1, 2, 0)]
+        [TestCase(0, 2, 0)]
+        [TestCase(1, 0, 0)]
         [TestCase(2, 0, 0)]
-        [TestCase(3, 2, 2)]
+        [TestCase(3, 2, 0)]
         [TestCase(4, 0, 2)]
         public void Always_Chooses_Spot_With_Least_Opponents_On_Second_Move(int seed, int expectedX, int expectedY)
         {
@@ -46,7 +46,7 @@ namespace TicTacToe.AI.Tests.AI
         }
 
         [Test]
-        [TestCase(0, 2, 1)]
+        [TestCase(0, 1, 2)]
         [TestCase(1, 1, 2)]
         [TestCase(2, 1, 2)]
         public void Always_Fills_Gap_On_Third_Move(int seed, int expectedX, int expectedY)
@@ -68,7 +68,7 @@ namespace TicTacToe.AI.Tests.AI
 
         [Test]
         [TestCase(0, 1, 2)]
-        [TestCase(1, 2, 1)]
+        [TestCase(1, 0, 1)]
         [TestCase(2, 0, 1)]
         public void Should_Attempt_Open_Line_On_Fourth_Move(int seed, int expectedX, int expectedY)
         {
